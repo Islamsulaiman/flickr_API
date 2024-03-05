@@ -5,9 +5,6 @@ class FlickrController < ApplicationController
   rescue ArgumentError => e
     logger.error "Error: #{e.message}"
     flash.alert = e.message
-  rescue => e
-    logger.error "Error fetching photos: #{e.message}"
-    flash.alert = "Unexpected error occurred. Please try again."
   end
 
   private
