@@ -10,6 +10,12 @@
     <%= form.submit "Show Photos", autocomplete: 'off' %>
 <% end %>
 
+<% if flash.alert %>
+  <div id="flash-alert">
+    <%= flash.alert %>
+  </div>
+<% end %>
+
 <% if @photos %>
   <div id="flickr-photos">
     <% @photos.each do |photo| %>
