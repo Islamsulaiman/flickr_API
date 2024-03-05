@@ -1,15 +1,19 @@
+<div>
+    <h2>Photos, all the photos !!</h2>
+</div>
+
 <p>Flickr index page</p>
 
 <%= form_with(url:root_path, method: :get, local: true) do |form| %>
-    <%= form.lable :flickr_user_id, 'Flickr user ID' %>
+    <%= form.label :flickr_user_id, 'Flickr user ID' %>
     <%= form.text_field :flickr_user_id %>
-    <%= form.submit "Show Photos" %>
+    <%= form.submit "Show Photos", autocomplete: 'off' %>
 <% end %>
 
 <% if @photos %>
   <div id="flickr-photos">
     <% @photos.each do |photo| %>
-      <%= image_tag photo.url %> <!-- Adjust based on your method of fetching photos -->
+      <%= image_tag photo %>
     <% end %>
   </div>
 <% end %>

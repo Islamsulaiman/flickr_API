@@ -1,9 +1,9 @@
 class FlickrController < ApplicationController
-  def index 
-    if params[:flickr_user_id].present?
-      # Fetch photos from Flickr based on the provided user ID
-      # This is a placeholder logic; you'll need to replace it with actual Flickr API call
-        @photos = FlickrService.get_photos_for_user(params[:flickr_user_id])
+  def index
+    begin #Necessary in case the user is not found
+      @photos = FlickrService.new(params[:flickr_user_id]).get_photos_for_user unless params[:flickr_user_id].nil?
+    rescue => e
+      flash.alert = "User Not Found... Sorry. Check and try again"
     end
   end
 end
